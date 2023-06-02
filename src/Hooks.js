@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useMemo } from "react";
 import { useRecoilState } from "recoil";
 import { lastTodoIdAtom, todoAtom } from "./Atoms";
 import { dateToStr } from "./util";
@@ -10,15 +10,14 @@ export function useTodosState() {
 
   lastTodoIdRef.current = lastTodoId;
 
-  const addTodo = (newContent) => {
+  const addTodo = (regDate, content) => {
     const id = ++lastTodoIdRef.current;
     setLastTodoId(id);
 
     const newTodo = {
       id,
-      content: newContent,
-      regDate: dateToStr(new Date()),
-      check: false,
+      content,
+      regDate,
     };
     SetTodos((todos) => [newTodo, ...todos]);
 
@@ -84,5 +83,19 @@ export function useTodosState() {
     findTodoById,
     modifyTodoById,
     check,
+  };
+}
+
+export function useTodoOptionDrawerState() {
+  const [todoId, SetTodoId] = useState(null);
+  const opened = useMemo(() => todoId !== null, [todoId]);
+  const close = () => SetTodoId(null);
+  const open = (id) => SetTodoId(id);
+
+  return {
+    todoId,
+    opened,
+    close,
+    open,
   };
 }
