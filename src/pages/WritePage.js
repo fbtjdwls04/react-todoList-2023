@@ -1,6 +1,8 @@
 import { TextField, Button } from "@mui/material";
+import { useTodosState } from "../Hooks";
 
 export default function WritePage() {
+  const todosState = useTodosState();
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -15,6 +17,8 @@ export default function WritePage() {
       form.content.focus();
       return;
     }
+
+    todosState.addTodo(form.regDate.value, form.content.value);
   };
 
   return (

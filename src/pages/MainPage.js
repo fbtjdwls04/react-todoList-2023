@@ -9,7 +9,7 @@ export default function MainPage() {
     <>
       <div className="flex-1 flex justify-center items-center">
         <div>
-          <span>글쓰기 페이지</span>
+          <span>메인 페이지 입니다</span>
         </div>
       </div>
     </>
