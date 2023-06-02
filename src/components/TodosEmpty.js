@@ -12,7 +12,7 @@ export default function TodosEmpty() {
             </span>
             을 입력해주세요.
           </span>
-          <Button variant="contained" to="/write" components={NavLink}>
+          <Button variant="contained" to="/write" LinkComponent={NavLink}>
             할 일 추가하기
           </Button>
         </div>
