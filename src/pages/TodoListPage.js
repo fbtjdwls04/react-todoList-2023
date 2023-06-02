@@ -11,6 +11,21 @@ export default function TodoList() {
   const [filterCompletedIndex, setFilterCompletedIndex] = useRecoilState(
     TodoList__filterCompletedIndexAtom
   );
+
+  const getFiltererdTodos = () => {
+    if (filterCompletedIndex == 1) {
+      return todosState.todos.filter((todo) => !todo.check);
+    }
+
+    if (filterCompletedIndex == 2) {
+      return todosState.todos.filter((todo) => todo.check);
+    }
+
+    return todosState.todos;
+  };
+
+  const filteredTodos = getFiltererdTodos();
+
   return (
     <>
       <TodoOptionDrawer status={todoOptionDrawerStatus} />
@@ -50,7 +65,7 @@ export default function TodoList() {
       </Tabs>
       <div className="mt-5 px-4">
         <ul>
-          {todosState.todos.map((todo, index) => (
+          {filteredTodos.map((todo, index) => (
             <TodoListItem
               todo={todo}
               index={index}
