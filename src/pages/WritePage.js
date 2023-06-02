@@ -1,7 +1,9 @@
 import { TextField, Button } from "@mui/material";
 import { useTodosState } from "../Hooks";
+import { useNoticeSnackBarState } from "../components/NoticeSnackBar";
 
 export default function WritePage() {
+  const noticeSnackBarState = useNoticeSnackBarState();
   const todosState = useTodosState();
   const onSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +20,11 @@ export default function WritePage() {
       return;
     }
 
-    todosState.addTodo(form.regDate.value, form.content.value);
+    const newTodoId = todosState.addTodo(
+      form.regDate.value,
+      form.content.value
+    );
+    noticeSnackBarState.open(`${newTodoId}번 할 일이 추가되었습니다.`);
   };
 
   return (
@@ -42,7 +48,7 @@ export default function WritePage() {
 
         <Button type="submit" variant="contained">
           <span>
-            <i class="fa-solid fa-pen"></i>
+            <i className="fa-solid fa-pen"></i>
           </span>
           <span>&nbsp;</span>
           <span>할 일 추가</span>

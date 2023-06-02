@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import WritePage from "./pages/WritePage";
-
+import { NoticeSnackBar } from "./components/NoticeSnackBar";
 function App() {
   const location = useLocation();
   return (
@@ -27,6 +27,7 @@ function App() {
           </div>
         </Toolbar>
       </AppBar>
+      <NoticeSnackBar />
       <Routes>
         <Route path="/main" element={<MainPage />} />
         <Route path="/write" element={<WritePage />} />
