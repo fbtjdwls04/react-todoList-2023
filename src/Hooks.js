@@ -45,6 +45,7 @@ export function useTodosState() {
       return;
     }
     modifyTodo(index, performDate, newContent);
+    return id;
   };
 
   const removeTodo = (index) => {

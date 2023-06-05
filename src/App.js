@@ -18,7 +18,7 @@ function App() {
         <Toolbar>
           <div className="flex-1"></div>
           <div className="font-bold select-none">MY NOTE</div>
-          <div className="flex-1 flex justify-end">
+          <div className="flex-1 flex justify-end select-none">
             {location.pathname == "/main" && (
               <NavLink to="/write">글작성</NavLink>
             )}
