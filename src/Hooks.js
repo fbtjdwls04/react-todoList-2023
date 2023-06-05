@@ -17,7 +17,7 @@ export function useTodosState() {
     const newTodo = {
       id,
       content,
-      regDate,
+      regDate: dateToStr(new Date(regDate)),
     };
     SetTodos((todos) => [newTodo, ...todos]);
 
@@ -52,6 +52,20 @@ export function useTodosState() {
       removeTodo(index);
     }
   };
+
+  const editTodo = (id, performDate, content) => {
+    const newTodo = {
+      id,
+      regDate: dateToStr(new Date(performDate)),
+      content,
+    };
+
+    const newTodos = todos.map((todo) => (todo.id == id ? newTodo : todo));
+    SetTodos(newTodos);
+
+    return id;
+  };
+
   const findTodoIndexById = (id) => {
     return todos.findIndex((todo) => todo.id == id);
   };
@@ -79,6 +93,7 @@ export function useTodosState() {
     modifyTodo,
     removeTodo,
     removeTodoById,
+    editTodo,
     findTodoIndexById,
     findTodoById,
     modifyTodoById,

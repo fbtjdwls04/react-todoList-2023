@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useTodosState } from "../Hooks";
 import { useNoticeSnackBarState } from "./NoticeSnackBar";
 import {
@@ -43,7 +44,8 @@ export default function TodoOptionDrawer({ status }) {
           <Divider />
           <ListItemButton
             className="!p-5 !pt-6 !items-baseline"
-            onClick={() => {}}
+            to={`/edit/${status.todoId}`}
+            LinkComponent={NavLink}
           >
             <i className="fa-solid fa-pen"></i>
             &nbsp;수정

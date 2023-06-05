@@ -63,7 +63,7 @@ export default function TodoList() {
           value={2}
         />
       </Tabs>
-      <div className="mt-5 px-4">
+      <div className="mt-5 px-4 overflow-y-auto">
         <ul>
           {filteredTodos.map((todo, index) => (
             <TodoListItem

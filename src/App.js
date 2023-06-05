@@ -9,6 +9,7 @@ import {
 import MainPage from "./pages/MainPage";
 import WritePage from "./pages/WritePage";
 import { NoticeSnackBar } from "./components/NoticeSnackBar";
+import EditPage from "./pages/EditPage";
 function App() {
   const location = useLocation();
   return (
@@ -18,12 +19,10 @@ function App() {
           <div className="flex-1"></div>
           <div className="font-bold select-none">MY NOTE</div>
           <div className="flex-1 flex justify-end">
-            {location.pathname != "/write" && (
+            {location.pathname == "/main" && (
               <NavLink to="/write">글작성</NavLink>
             )}
-            {location.pathname == "/write" && (
-              <NavLink to="/main">메인</NavLink>
-            )}
+            {location.pathname != "/main" && <NavLink to="/main">메인</NavLink>}
           </div>
         </Toolbar>
       </AppBar>
@@ -32,6 +31,7 @@ function App() {
         <Route path="/main" element={<MainPage />} />
         <Route path="/write" element={<WritePage />} />
         <Route path="*" element={<Navigate to="/main" />} />
+        <Route path="/edit/:id" element={<EditPage />} />
       </Routes>
     </>
   );
