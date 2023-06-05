@@ -24,7 +24,7 @@ export default function EditPage() {
       return;
     }
 
-    const newTodoId = todosState.editTodo(
+    const newTodoId = todosState.modifyTodoById(
       todo.id,
       form.performDate.value,
       form.content.value
@@ -42,7 +42,7 @@ export default function EditPage() {
           label="언제 해야하나요?"
           focused
           type="datetime-local"
-          defaultValue={todo.regDate}
+          defaultValue={todo.performDate}
         />
         <TextField
           name="content"

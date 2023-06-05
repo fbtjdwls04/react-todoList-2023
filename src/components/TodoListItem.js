@@ -14,7 +14,7 @@ export default function TodoListItem({ todo, index, openDrawer }) {
             className="!pt-2"
           />
           <Chip
-            label={todo.regDate}
+            label={todo.performDate}
             variant="outlined"
             color="primary"
             className="!pt-2"

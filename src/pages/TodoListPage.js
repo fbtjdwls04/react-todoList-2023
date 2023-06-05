@@ -29,7 +29,10 @@ export default function TodoList() {
   };
 
   const filteredTodos = getFiltererdTodos();
-
+  const sortedTodos = [...filteredTodos].sort((a, b) => {
+    if (a.performDate == b.performDate) return 0;
+    return a.performDate > b.performDate ? 1 : -1;
+  });
   return (
     <>
       <TodoOptionDrawer status={todoOptionDrawerStatus} />
@@ -120,7 +123,7 @@ export default function TodoList() {
 
       <div className="mt-5 px-4 overflow-y-auto">
         <ul>
-          {filteredTodos.map((todo, index) => (
+          {sortedTodos.map((todo, index) => (
             <TodoListItem
               todo={todo}
               index={index}

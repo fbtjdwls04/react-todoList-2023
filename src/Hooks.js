@@ -10,34 +10,41 @@ export function useTodosState() {
 
   lastTodoIdRef.current = lastTodoId;
 
-  const addTodo = (regDate, content) => {
+  const addTodo = (performDate, content) => {
     const id = ++lastTodoIdRef.current;
     setLastTodoId(id);
 
     const newTodo = {
       id,
       content,
-      regDate: dateToStr(new Date(regDate)),
+      regDate: dateToStr(new Date()),
+      performDate: dateToStr(new Date(performDate)),
     };
     SetTodos((todos) => [newTodo, ...todos]);
 
     return id;
   };
 
-  const modifyTodo = (index, newContent) => {
+  const modifyTodo = (index, performDate, newContent) => {
     const newTodos = todos.map((todo, _index) =>
-      _index != index ? todo : { ...todo, content: newContent }
+      _index != index
+        ? todo
+        : {
+            ...todo,
+            content: newContent,
+            performDate: dateToStr(new Date(performDate)),
+          }
     );
     SetTodos(newTodos);
   };
 
-  const modifyTodoById = (id, newContent) => {
+  const modifyTodoById = (id, performDate, newContent) => {
     const index = findTodoIndexById(id);
 
     if (index == -1) {
       return;
     }
-    modifyTodo(index, newContent);
+    modifyTodo(index, performDate, newContent);
   };
 
   const removeTodo = (index) => {
@@ -51,19 +58,6 @@ export function useTodosState() {
     if (index != -1) {
       removeTodo(index);
     }
-  };
-
-  const editTodo = (id, performDate, content) => {
-    const newTodo = {
-      id,
-      regDate: dateToStr(new Date(performDate)),
-      content,
-    };
-
-    const newTodos = todos.map((todo) => (todo.id == id ? newTodo : todo));
-    SetTodos(newTodos);
-
-    return id;
   };
 
   const findTodoIndexById = (id) => {
@@ -93,7 +87,6 @@ export function useTodosState() {
     modifyTodo,
     removeTodo,
     removeTodoById,
-    editTodo,
     findTodoIndexById,
     findTodoById,
     modifyTodoById,
