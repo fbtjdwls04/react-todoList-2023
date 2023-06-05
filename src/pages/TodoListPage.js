@@ -2,7 +2,10 @@ import { Tab, Tabs } from "@mui/material";
 import { useTodoOptionDrawerState, useTodosState } from "../Hooks";
 import TodoOptionDrawer from "../components/TodoOptionDrawer";
 import TodoListItem from "../components/TodoListItem";
-import { TodoList__filterCompletedIndexAtom } from "../Atoms";
+import {
+  TodoList__filterCompletedIndexAtom,
+  TodoList__sortIndexAtom,
+} from "../Atoms";
 import { useRecoilState } from "recoil";
 
 export default function TodoList() {
@@ -11,6 +14,7 @@ export default function TodoList() {
   const [filterCompletedIndex, setFilterCompletedIndex] = useRecoilState(
     TodoList__filterCompletedIndexAtom
   );
+  const [sortIndex, setSortIndex] = useRecoilState(TodoList__sortIndexAtom);
 
   const getFiltererdTodos = () => {
     if (filterCompletedIndex == 1) {
@@ -63,6 +67,57 @@ export default function TodoList() {
           value={2}
         />
       </Tabs>
+      <Tabs
+        variant="scrollable"
+        value={sortIndex}
+        onChange={(event, newValue) => setSortIndex(newValue)}
+      >
+        <Tab
+          className="flex-grow !max-w-[none]"
+          label={
+            <span className="flex">
+              <i class="fa-regular fa-clock"></i>
+              <span className="mx-2 whitespace-nowrap">급해요</span>
+              <i class="fa-solid fa-sort-up relative top-[3px]"></i>
+            </span>
+          }
+          value={0}
+        />
+        <Tab
+          className="flex-grow !max-w-[none]"
+          label={
+            <span className="flex">
+              <i class="fa-regular fa-clock"></i>
+              <span className="mx-2 whitespace-nowrap">널널해요</span>
+              <i class="fa-solid fa-sort-down relative bottom-[3px]"></i>
+            </span>
+          }
+          value={1}
+        />
+        <Tab
+          className="flex-grow !max-w-[none]"
+          label={
+            <span className="flex">
+              <i class="fa-solid fa-pen"></i>
+              <span className="mx-2 whitespace-nowrap">작성 순</span>
+              <i class="fa-solid fa-sort-up relative top-[3px]"></i>
+            </span>
+          }
+          value={2}
+        />
+        <Tab
+          className="flex-grow !max-w-[none]"
+          label={
+            <span className="flex">
+              <i class="fa-solid fa-pen"></i>
+              <span className="mx-2 whitespace-nowrap">작성 순</span>
+              <i class="fa-solid fa-sort-down relative bottom-[3px]"></i>
+            </span>
+          }
+          value={3}
+        />
+      </Tabs>
+
       <div className="mt-5 px-4 overflow-y-auto">
         <ul>
           {filteredTodos.map((todo, index) => (
