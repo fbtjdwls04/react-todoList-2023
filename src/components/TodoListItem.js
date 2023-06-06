@@ -1,6 +1,7 @@
 import { Chip, Button } from "@mui/material";
 import classNames from "classnames";
 import { useTodosState } from "../Hooks";
+import { dateToStr } from "../util";
 
 export default function TodoListItem({ todo, index, openDrawer }) {
   const todosState = useTodosState();
@@ -19,6 +20,9 @@ export default function TodoListItem({ todo, index, openDrawer }) {
             color="primary"
             className="!pt-2"
           />
+          {todo.performDate < dateToStr(new Date()) && (
+            <Chip label={"기한 만료"} color="error" className="!pt-2" />
+          )}
         </div>
         <div className="mt-4 shadow rounded-[20px] flex">
           <Button
