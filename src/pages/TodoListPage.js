@@ -141,10 +141,11 @@ export default function TodoList() {
         />
       </Tabs>
 
-      <div className="mt-5 px-4 overflow-y-auto">
+      <div className="px-5 pb-6 sm:px-8 overflow-y-auto">
         <ul>
           {sortedTodos.map((todo, index) => (
             <TodoListItem
+              key={todo.id}
               todo={todo}
               index={index}
               openDrawer={todoOptionDrawerStatus.open}

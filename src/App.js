@@ -16,14 +16,22 @@ function App() {
     <>
       <AppBar position="static">
         <Toolbar>
-          <div className="flex-1"></div>
-          <div className="font-bold select-none">MY NOTE</div>
-          <div className="flex-1 flex justify-end select-none">
-            {location.pathname == "/main" && (
-              <NavLink to="/write">글작성</NavLink>
-            )}
-            {location.pathname != "/main" && <NavLink to="/main">메인</NavLink>}
-          </div>
+          <NavLink
+            to="/main"
+            className="font-bold select-none flex self-stretch items-center mx-auto"
+          >
+            MY NOTE
+          </NavLink>
+          {location.pathname == "/main" && (
+            <NavLink to="/write" className="flex self-stretch items-center">
+              글작성
+            </NavLink>
+          )}
+          {location.pathname != "/main" && (
+            <NavLink to="/main" className="flex self-stretch items-center">
+              리스트
+            </NavLink>
+          )}
         </Toolbar>
       </AppBar>
       <NoticeSnackBar />
