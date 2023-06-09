@@ -10,12 +10,12 @@ export default function WritePage() {
 
     const form = e.target;
     if (form.regDate.value.length == 0) {
-      alert("날짜를 입력해주세요");
+      alert("날짜를 입력해 주세요");
       form.regDate.focus();
       return;
     }
     if (form.content.value.length == 0) {
-      alert("내용을 입력해주세요");
+      alert("내용을 입력해 주세요");
       form.content.focus();
       return;
     }
@@ -39,13 +39,13 @@ export default function WritePage() {
         <TextField
           name="regDate"
           id="outlined-basic"
-          label="언제 해야하나요?"
+          label="언제 해야 하나요?"
           focused
           type="datetime-local"
         />
         <TextField
           name="content"
-          label="무엇을 해야하나요?"
+          label="무엇을 해야 하나요?"
           className="flex flex-1"
           multiline
           InputProps={{ className: "flex-1 flex-col" }}

@@ -122,7 +122,7 @@ export default function TodoList() {
           label={
             <span className="flex">
               <i class="fa-solid fa-pen"></i>
-              <span className="mx-2 whitespace-nowrap">작성 순</span>
+              <span className="mx-2 whitespace-nowrap">작성순</span>
               <i class="fa-solid fa-sort-up relative top-[3px]"></i>
             </span>
           }
@@ -133,7 +133,7 @@ export default function TodoList() {
           label={
             <span className="flex">
               <i class="fa-solid fa-pen"></i>
-              <span className="mx-2 whitespace-nowrap">작성 순</span>
+              <span className="mx-2 whitespace-nowrap">작성순</span>
               <i class="fa-solid fa-sort-down relative bottom-[3px]"></i>
             </span>
           }
